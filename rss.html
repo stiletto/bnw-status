@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:image="http://purl.org/rss/1.0/modules/image/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<channel>
+    <title>{{ config.TITLE }}</title>
+    <link>{{ config.BASE }}</link>
+    <description></description>
+    <atom:link href="{{ config.BASE }}/?format=rss" type="application/rss+xml" rel="self"></atom:link>
+    <generator>mcedit+jinja2</generator>
+{% for message in messages %}
+    <item>
+        <title>{{ message.date.strftime("%Y.%m.%d %H:%M:%S") }}</title>
+        <link>{{ config.BASE }}/#{{ message.date }}</link>
+        <description><![CDATA[{{ message.content|safe }}]]></description>
+        <guid>{{ config.BASE }}/#{{ message.date }}</guid><pubDate>{{ message.date.strftime("%a, %d %b %y %H:%M:%S GMT") }}</pubDate>
+    </item>
+{% endfor %}
+</channel>
+</rss>

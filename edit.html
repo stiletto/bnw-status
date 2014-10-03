@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content %}
+{% if message %}<p>Editing message {{ message.date }}</p>
+{% else %}<p>Creating new message</p>{% endif %}
+<form action="{% if message %}/edit/{{ message.key.id() }}{% else %}/new{% endif %}" method="post">
+<textarea name="content" class="edit_content" rows=20>{% if message %}{{ message.content }}{% endif %}</textarea>
+<p>
+    {% if message %}
+    <button type="submit" name="action" value="edit" />Edit</button>
+    <button type="submit" name="action" value="delete" >Delete</button>
+    {% else %}
+    <button type="submit" name="action" value="edit" />Create</button>
+    {% endif %}
+    <button type="submit" name="action" value="cancel" >Cancel</button>
+</p>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!html>
+<html>
+<head>
+    <title>{{ config.TITLE }}</title>
+    <link type="text/css" rel="stylesheet" href="/status-static/main.css" />
+    <link rel="alternate" type="application/rss+xml" title="{{ config.TITLE }} feed" href="/?format=rss" />
+</head>
+<body>
+    <h1><img class="logo" src="/status-static/favicon.png" />{{ config.TITLE }}</h1>
+    {% block content %}
+    {% if user %}<h2><a href="/new">Create new message</a></h2>{% endif %}
+    {% for message in messages %}
+    <div class="message" id="{{ message.date }}">
+    <h4 class="message_date">{{ message.date.strftime("%Y.%m.%d %H:%M:%S") }} (UTC){% if user %} <a href="/edit/{{ message.key.id() }}">Edit</a>{% endif %}</h4>
+    <p class="message_content">{{ message.content|safe }}</p>
+    </div>
+    {% endfor %}
+    {% endblock %}
+    {% if more and next_curs %}
+    <div class="earlier"><a href="/?cursor={{ next_curs.urlsafe() }}">&gt;&gt;</a></div>
+    {% endif %}
+</body>
+</html>

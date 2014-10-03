@@ -1,0 +1,38 @@
+.logo {
+    vertical-align: top;
+    padding-top: 4px;
+    padding-right: 23px;
+}
+body {
+    width: 960px;
+    margin: 0px auto;
+}
+h1 {
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 72px;
+}
+h1, h4, p {
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+.edit_content {
+    width: 100%;
+}
+
+.message {
+    margin-bottom: 16px;
+}
+
+.message_date, .message_content {
+    margin: 0;
+}
+.message_content {
+    padding-top: 4px;
+    padding-left: 32px;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.earlier {
+    text-align: center;
+}
+
